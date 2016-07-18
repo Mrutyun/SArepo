@@ -1,0 +1,36 @@
+package com.Stockaccounting.masterscripts;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
+
+public class SAexecution 
+{
+	@Test
+	public void Execution()
+	{
+		WebDriver driver=new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+		driver.get("http://webapp.qedgetech.com");
+		
+		LogiPagePOM Lp=PageFactory.initElements(driver,LogiPagePOM.class);
+		Lp.AdminLogin("admin","master");
+		
+		HomePage Hp=PageFactory.initElements(driver,HomePage.class);
+		//Hp.Customer();
+		//Hp.Suppliers();
+		Hp.StockItems();
+		//Hp.Sale();
+		Hp.LogOut();
+		
+		SuppliersCreationsPage Scp=PageFactory.initElements(driver,SuppliersCreationsPage.class);
+		Scp.SuppName();
+		
+		
+		
+	}
+
+}

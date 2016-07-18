@@ -1,0 +1,48 @@
+package com.Stockaccounting.masterscripts;
+
+import java.sql.Driver;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class SuppliersCreationsPage
+{
+	@FindBy(id="x_Supplier_Name")
+	WebElement SuppName;
+	
+	@FindBy(id="x_Address")
+	WebElement SuppAdd;
+	
+	@FindBy(id="x_City")
+	WebElement SuppCity;
+	
+	@FindBy(id="x_Country")
+	WebElement SuppCountry;
+	
+	@FindBy(id="x_Contact_Person")
+	WebElement SuppCp;
+	
+	@FindBy(id="x_Phone_Number")
+	WebElement SuppPn;
+	
+	@FindBy(id="x__Email")
+	WebElement SuppEmail;
+	
+	@FindBy(id="x_Mobile_Number")
+	WebElement SuppMn;
+	
+	@FindBy(id="x_Notes")
+    WebElement SupplNotes;
+
+	public void SuppName() 
+	{
+		SuppName.sendKeys(Sname);
+		
+		
+	}
+	
+	
+	
+	
+
+}

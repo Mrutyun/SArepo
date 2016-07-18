@@ -1,0 +1,15 @@
+package com.Stockaccounting.proporties;
+
+import org.testng.annotations.Test;
+
+import com.Stockaccounting.masterscripts.testNgbase;
+
+public class SAtcs  extends testNgbase()
+{
+	@Test
+	public void UOM()
+	{
+		
+	}
+}
+}

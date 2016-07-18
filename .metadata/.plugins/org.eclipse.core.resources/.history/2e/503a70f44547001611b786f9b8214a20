@@ -1,0 +1,103 @@
+package com.Stockaccounting.tests;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import com.Stockaccounting.masterscripts.Stockaccounting_lib;
+
+public class TestingLibrary {
+
+	
+	private static final String Sname = null;
+
+	public static void main(String[] args) throws IOException
+	{
+		Stockaccounting_lib sl=new Stockaccounting_lib();
+	
+		
+		sl.launchApp("http://webapp.qedgetech.com");
+		sl.AdminLogin("admin","master");
+		
+		//sl.StockCategories("Medicines");
+		//sl.UnitOfMeasurement("h00hj;].p;gbhj", "100k[ljiuhujjo");
+		
+		/*
+		sl.StockItems("Medicines", "Lupin", "Medicines","100Strips","20000", "30000","anticold");
+		
+		sl.StockItems("Ciprofloxacin","Lupin","Cipro","200Strips","25000","40000","note");*/
+		
+		
+	
+		
+	
+	/*int	rc;
+	String UmId,UmDesc;
+	String Res;
+		FileInputStream fi=new FileInputStream("D:\\Mishra1\\Stock Accounting Mishra\\src\\com\\Stockaccounting\\testdata\\UOM.xlsx");
+		XSSFWorkbook wb=new XSSFWorkbook(fi);
+		XSSFSheet ws=wb.getSheet("uom");
+		rc=ws.getLastRowNum();
+		System.out.println(rc);
+		for (int i = 1; i <=rc; i++) 
+		{
+			
+	      XSSFRow row=ws.getRow(i);
+	     
+	    	XSSFCell wc1=row.getCell(0);
+	        XSSFCell wc2=row.getCell(1);
+	        XSSFCell wc3=row.createCell(2);
+	        UmId=wc1.getStringCellValue();
+	        UmDesc=wc2.getStringCellValue();
+	        Res = sl.UnitOfMeasurement(UmId, UmDesc);
+	      
+	         wc3.setCellValue(Res);
+		}
+	FileOutputStream fo=new FileOutputStream("D:\\Mishra1\\Stock Accounting Mishra\\src\\com\\Stockaccounting\\Results\\uomres.xlsx");
+		wb.write(fo);
+		wb.close();
+	*/	
+		int Rc;
+		String Res;
+		FileInputStream fi=new FileInputStream("D:\\Mishra1\\Stock Accounting Mishra\\src\\com\\Stockaccounting\\testdata\\Suppliers.xlsx");
+		XSSFWorkbook wb=new XSSFWorkbook(fi);
+		XSSFSheet ws=wb.getSheet("Sheet1");
+		Rc=ws.getLastRowNum();
+		for (int i = 1; i <= Rc; i++) 
+		{
+			XSSFRow row=ws.getRow(i);
+			XSSFCell wc =row.getCell(0);
+			XSSFCell wc1 =row.getCell(1);
+			XSSFCell wc2=row.getCell(2);
+		    XSSFCell wc3=row.getCell(3);
+		    XSSFCell wc4=row.getCell(4);
+		    XSSFCell wc5=row.getCell(5);
+		    XSSFCell wc6=row.getCell(6);
+		    XSSFCell wc7=row.getCell(7);
+		    XSSFCell wc8=row.getCell(8);
+		   String Sname= wc.getStringCellValue();
+		   String Address=wc1.getStringCellValue();
+		   String City=wc2.getStringCellValue();
+		   String Country=wc3.getStringCellValue();
+		   String Contact Person=wc4.getStringCellValue();
+		   String Phone Number=wc5.getStringCellValue();
+		   String Email=wc6.getStringCellValue();
+		   String Mobile Nuber=wc7.getStringCellValue();
+		   String Note=wc8.getStringCellValue();
+			Res=sl.SuppliersCreation(Sname, Address, City, Country, Contactp, Pn, Email, Mn, Note)
+		    XSSFCell cell8=row.createCell(7).setCellValue(Res);
+		}
+		FileOutputStream fo=new FileOutputStream("D:\\Mishra1\\Stock Accounting Mishra\\src\\com\\Stockaccounting\\Results\\SupplierRes.xlsx");
+		wb.write(fo);
+		
+		fo.close();
+		wb.close();
+		
+	}
+
+}

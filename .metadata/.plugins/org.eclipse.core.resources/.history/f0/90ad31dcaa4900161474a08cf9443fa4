@@ -1,0 +1,230 @@
+package com.Stockaccounting.masterscripts;
+
+import java.awt.List;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
+import org.eclipse.jdt.internal.compiler.ast.ReturnStatement;
+import org.openqa.jetty.html.Select;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.server.browserlaunchers.Sleeper;
+
+public class Stockaccounting_lib 
+{
+	public static WebDriver driver;
+	public static String Expval,Actval;
+    public static String url;
+    public static Properties pr;
+    public static FileInputStream fi;
+   
+	  public void launchApp(String url) throws IOException
+	  {
+		pr=new Properties();
+	    fi=new FileInputStream("D:\\Mishra1\\Stock Accounting Mishra\\src\\com\\Stockaccounting\\proporties\\Repository.properties");
+	    pr.load(fi);
+		Expval="Login";
+		ProfilesIni pi=new ProfilesIni();
+		FirefoxProfile fi=pi.getProfile("mrutyunjaya");
+		driver=new FirefoxDriver(fi);
+		driver.get(pr.getProperty("Url"));
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+		Actval=driver.findElement(By.id(pr.getProperty("LoginButton"))).getText();
+		if (Expval.equalsIgnoreCase(Actval)) 
+		{
+			System.out.println("lauchApp passed");
+			
+		}
+		else {
+			System.out.println("launchApp failed");
+		}
+	  }
+	  public void AdminLogin(String Un,String Pwd)
+	  {
+		  Expval="Administrator";
+		  driver.findElement(By.id(pr.getProperty("Reset"))).click();
+		  driver.findElement(By.name(pr.getProperty("Un1"))).sendKeys(Un);
+	      driver.findElement(By.id(pr.getProperty("Pwd"))).sendKeys(Pwd);
+	      driver.findElement(By.id(pr.getProperty("LoginButton"))).click();
+	      Actval=driver.findElement(By.xpath(pr.getProperty("Administrator"))).getText();
+	      if (Actval.equalsIgnoreCase(Expval))
+	      {
+	    	  System.out.println("Admin Login passed");
+			
+		}
+	      else {
+			System.out.println("Admin Login failed");
+		}
+      }	
+	  public String SuppliersCreation(String Sname,String Add,String City,String Ctry,String Cp,String Pn,String Email,String Mn,String Note) 
+	  {
+		    Expval= "Add Succeeded";
+		    driver.findElement(By.linkText(pr.getProperty("Suppliers"))).click();
+			driver.findElement(By.xpath(pr.getProperty("AddButton1"))).click();
+			driver.findElement(By.id(pr.getProperty("SupplierName"))).sendKeys(Sname);
+			driver.findElement(By.id(pr.getProperty("Address"))).sendKeys(Add);
+			driver.findElement(By.id(pr.getProperty("City"))).sendKeys(City);
+			driver.findElement(By.id(pr.getProperty("Country"))).sendKeys(Ctry);
+			driver.findElement(By.id(pr.getProperty("CPerson"))).sendKeys(Cp);
+	     	driver.findElement(By.id(pr.getProperty("PNumber"))).sendKeys(Pn);
+			driver.findElement(By.id(pr.getProperty("Email1"))).sendKeys(Email);
+			driver.findElement(By.id(pr.getProperty("MNumber"))).sendKeys(Mn);
+			driver.findElement(By.id(pr.getProperty("Notes"))).sendKeys(Note);
+			driver.findElement(By.id(pr.getProperty("SubmitButton1"))).click();
+		    driver.findElement(By.xpath(pr.getProperty("Confirmation1"))).click();
+		    driver.findElement(By.xpath(pr.getProperty("AddSuccede1"))).click();
+		  Actval=driver.findElement(By.xpath(pr.getProperty("AddSuccesedeSf1"))).getText();
+		  if (Expval.equalsIgnoreCase(Actval)) 
+		  {
+			 // System.out.println("Suppliers creation is succed");
+			  return "PASS";
+		  }
+		  else 
+		  {
+			 // System.out.println("Suppliers creation is failed");
+			  return "FAIL";
+		   }
+		  
+		  
+	     }
+	  public void StockCategories(String Cn)
+	  {
+		    Expval= "Add Succeeded";
+		    Actions act=new Actions(driver);
+			act.moveToElement(driver.findElement(By.xpath(pr.getProperty("StockItems1")))).build().perform();
+			Sleeper.sleepTightInSeconds(3);
+		    driver.findElement(By.xpath(pr.getProperty("StockCategory"))).click();   
+		    driver.findElement(By.xpath(pr.getProperty("AddButton2"))).click();
+		    driver.findElement(By.id(pr.getProperty("CategoryName"))).sendKeys(Cn);
+		    driver.findElement(By.id(pr.getProperty("SubmitButton2"))).click();
+		    driver.findElement(By.xpath(pr.getProperty("Confirmation2"))).click();
+		    driver.findElement(By.xpath(pr.getProperty("AddSuccede2"))).click();
+		    Actval=driver.findElement(By.xpath(pr.getProperty("AddSuccessedeSf2"))).getText();
+		    if (Expval.equalsIgnoreCase(Actval)) 
+		    {
+		    	System.out.println("Stock cetagories creation succeeded");
+				
+			}
+		    else {
+				System.out.println("Stock cetagories creation failed");
+			}
+	  }
+		  
+		    public String UnitOfMeasurement(String Umid,String UmDesc)
+		    {
+		    	Expval="Add Succeeded";
+		   
+		    	Actions act=new Actions(driver);
+		    	act.moveToElement(driver.findElement(By.xpath(pr.getProperty("StockItems2")))).build().perform();
+		     	Sleeper.sleepTightInSeconds(5);
+			    driver.findElement(By.xpath(pr.getProperty("UnitOfMeasure"))).click();
+			    
+				driver.findElement(By.xpath(pr.getProperty("AddButton3"))).click();
+				driver.findElement(By.id(pr.getProperty("UomId"))).sendKeys(Umid);
+				driver.findElement(By.id(pr.getProperty("UomDesc"))).sendKeys(UmDesc);
+				driver.findElement(By.id(pr.getProperty("SubmitButton3"))).click();
+				driver.findElement(By.xpath(pr.getProperty("Confirmation3"))).click();
+				
+		    	Actval=driver.findElement(By.xpath(pr.getProperty("AddSuccesedeSf3"))).getText();
+		    	System.out.println(Actval);
+		    
+		    	
+		    	Sleeper.sleepTightInSeconds(2);
+		    	
+		       	driver.findElement(By.xpath(pr.getProperty("AddSuccede3"))).click();
+		       	
+		       	
+		    	if (Expval.equalsIgnoreCase(Actval)) 
+		    	{
+		    		System.out.println("Unit of measurement successed");
+		    		return "PASS";
+					
+				}
+		    	else {
+					System.out.println("Unit of measurement not successed");
+					return "FAIL";
+				}
+		    	
+		 
+		    }
+	  
+	  public void StockItems(String cetagory,String Splrname,String Stkname,String UOM,String Purprice,String Selprice,String note)
+	  {
+		  
+		    Expval="Add Succeeded";
+		  
+		    driver.findElement(By.xpath(pr.getProperty("StockItems3"))).click();
+			driver.findElement(By.xpath(pr.getProperty("AddButton4"))).click();
+			Sleeper.sleepTightInSeconds(3);
+			org.openqa.selenium.support.ui.Select cata=new org.openqa.selenium.support.ui.Select(driver.findElement(By.name(pr.getProperty("CatName1"))));
+			cata.selectByVisibleText(cetagory);
+			org.openqa.selenium.support.ui.Select splr=new org.openqa.selenium.support.ui.Select(driver.findElement(By.id(pr.getProperty("SupName"))));
+			splr.selectByVisibleText(Splrname);
+			
+			driver.findElement(By.id(pr.getProperty("StocName"))).sendKeys(Stkname);
+			org.openqa.selenium.support.ui.Select um=new org.openqa.selenium.support.ui.Select(driver.findElement(By.name(pr.getProperty("UOM1"))));
+			um.selectByVisibleText(UOM);
+			driver.findElement(By.id(pr.getProperty("PurPrice"))).sendKeys(Purprice);
+			driver.findElement(By.id(pr.getProperty("SelPrice"))).sendKeys(Selprice);
+			driver.findElement(By.id(pr.getProperty("Note"))).sendKeys(note);
+			driver.findElement(By.id(pr.getProperty("SubmitButton4"))).click();
+			driver.findElement(By.xpath(pr.getProperty("Confirmation4"))).click();
+			driver.findElement(By.xpath(pr.getProperty("AddSuccesede4"))).click();
+		    Actval=driver.findElement(By.xpath(pr.getProperty("AddSuccesedeSf4"))).getText();
+		  if (Expval.equalsIgnoreCase(Actval)) 
+		  {
+			  System.out.println("stock item creation successed");
+			
+		}
+		  else {
+			System.out.println("stock item creation failed");
+		}
+		  }
+		  public void CloseApp()
+		  {
+			  driver.quit();
+		  }
+		  public void logOut() throws InterruptedException
+		  {
+			  Expval="Login";
+			  driver.findElement(By.xpath(pr.getProperty("logOut"))).click();
+			  Thread.sleep(5);
+			  Actval=driver.findElement(By.id(pr.getProperty("LoginButton1"))).getText();
+			  //Code for "OK!" Button click
+			 /* java.util.List<WebElement>okb=driver.findElements(by.)
+			  
+			  List<WebElement> okb=driver.findElements(By.xpath(pr.getProperty("calert")));
+			    for (int i = 0; i < okb.size(); i++) 
+			    {
+			    	if (okb.get(i).getText().equalsIgnoreCase("OK"))
+			    	{
+			    		okb.get(i).click();
+			    		break;*/
+			  		}
+			  		
+			  	}
+			  
+			  driver.findElement(By.xpath("html/body/div[.]/div[2]/div/div[4]/div[2]/button[1]")).click();
+			  if (Actval.equalsIgnoreCase(Actval)) 
+			  {
+				  System.out.println("Logout Successful");
+				
+			}
+			  else {
+				System.out.println("Logout Not Successful");
+			}
+		  }
+	  
+
+
+}
+

@@ -1,0 +1,53 @@
+package com.Stockaccounting.masterscripts;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class HomePage 
+{
+	@FindBy(xpath=".//*[@id='mi_a_stock_items']/a")
+	WebElement Stockitems;
+	@FindBy(xpath=".//*[@id='mi_a_suppliers']/a")
+    WebElement Suppliers;
+	@FindBy(xpath=".//*[@id='mi_a_purchases']/a")
+	WebElement Purchases;
+	@FindBy(xpath=".//*[@id='mi_a_customers']/a")
+	WebElement Customers;
+	@FindBy(xpath=".//*[@id='mi_a_customers']/a")
+	WebElement Sales;
+	@FindBy(xpath=".//*[@id='mi_logout']/a")
+	WebElement Logout;
+	@FindBy (xpath="")
+	WebElement stockCategory;
+	
+	public void StockItems()
+	{
+		Stockitems.click();
+	}
+	public void Suppliers()
+	{
+		Suppliers.click();
+	}
+	public void Purchases()
+	{
+		Purchases.click();
+	}
+	public void Customer()
+	{
+		Customers.click();
+	}
+	public void Sale()
+	{
+		Sales.click();
+	}
+	public void LogOut()
+	{
+		Logout.click();
+	}
+	public void StockCetagory()
+	{
+		stockCategory.click();
+	}
+	
+
+}

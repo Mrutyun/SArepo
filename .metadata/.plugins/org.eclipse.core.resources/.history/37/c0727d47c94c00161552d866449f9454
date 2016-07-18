@@ -1,0 +1,39 @@
+package com.Stockaccounting.tests;
+
+import org.openqa.jetty.html.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
+
+import com.Stockaccounting.masterscripts.LogiPagePOM;
+
+public class FontColor {
+
+	
+	public static void main(String[] args) 
+	{
+		WebDriver driver=new FirefoxDriver();
+		driver.get("http://webapp.qedgetech.com");
+		LogiPagePOM lp=PageFactory.initElements(driver,LogiPagePOM.class);
+		lp.AdminLogin("admin","master");
+		
+		Actions act=new Actions(driver);
+		act.moveToElement(driver.findElement(By.xpath(".//*[@id='mci_Settings']/a"))).build().perform();
+		act.moveToElement(driver.findElement(By.xpath(".//*[@id='mci_Themes2fColors']/a"))).build().perform();
+
+            // driver.getTitle().indexOf("0");
+             //driver.findElement(By.xpath(".//*[@id='mci_Dark_Glass']/a")).click();
+             driver.findElement(By.xpath(".//*[@id='mci_Gray']/a")).click();
+		//for (int i = 0; i < args.length; i++) {
+			
+		//}
+		
+		
+		
+	}
+
+}

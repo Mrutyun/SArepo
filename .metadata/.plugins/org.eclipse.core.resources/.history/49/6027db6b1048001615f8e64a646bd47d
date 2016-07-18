@@ -1,0 +1,13 @@
+package com.Stockaccounting.masterscripts;
+
+import org.testng.annotations.Test;
+
+public class SAtc extends testNgbase
+
+{
+@Test
+public void UOM()
+{
+    SL.UnitOfMeasurement("Mitsu","Duster");	
+}
+}

@@ -1,0 +1,7 @@
+package com.Stockaccounting.masterscripts;
+
+public class SAtc extends testNgbase
+
+{
+
+}

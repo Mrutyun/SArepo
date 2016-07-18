@@ -1,0 +1,75 @@
+#Launching the application
+Url=http://webapp.qedgetech.com
+
+#Admin Login
+
+Reset=btnreset
+Un1=username
+Un=username 
+Pwd=password
+LoginButton=btnsubmit
+Administrator=.//*[@id='msUserName']/font/strong
+
+#Suppliers Creation
+Suppliers=Suppliers
+AddButton1=.//*[@id='ewContentColumn']/div[3]/div[1]/div[1]/div[1]/div/a/span
+SupplierName=x_Supplier_Name
+Address=x_Address
+City=x_City
+Country=x_Country
+CPerson=x_Contact_Person
+PNumber=x_Phone_Number
+Email1=x_Email
+MNumber=x_mobile_Number
+Notes=x_Notes
+SubmitButton1=btnAction
+Confirmation1=.//*[@class='ajs-button btn btn-primary']
+AddSuccede1=.//*[@class='ajs-button btn btn-primary']
+AddSucceseedSf1=.//*[@id='ewFooterRow']/div
+#Stock Categories
+StockItems1=.//*[@id='mi_a_stock_items']/a
+StockCategory=.//*[@id='mi_a_stock_categories']/a
+AddButton2=.//*[@id='ewContentColumn']/div[3]/div[1]/div[1]/div[1]/div/a/span
+CategoryName=x_Category_Name
+SubmitButton2=btnAction
+Confirmation2=.//*[@class='ajs-button btn btn-primary']
+AddSuccede2=html/body/div[.]/div[2]/div/div[4]/div[2]/button
+AddSuccessedeSf2=html/body/div[.]/div[2]/div/div[3]/div/div
+
+#Unit Of Measurement
+StockItems2=.//*[@id='mi_a_stock_items']/a
+UnitOfMeasure=.//*[@id='mi_a_unit_of_measurement']/a
+AddButton3=.//*[@id='ewContentColumn']/div[3]/div[1]/div[1]/div[1]/div/a/span
+UomId=x_UOM_ID
+UomDesc=x_UOM_Description
+SubmitButton3=btnAction
+Confirmation3=html/body/div[.]/div[2]/div/div[4]/div[2]/button[1]
+AddSuccede3=html/body/div[.]/div[2]/div/div[4]/div[2]/button
+AddSuccesedeSf3=html/body/div[.]/div[2]/div/div[3]/div/div
+
+#Stock Items
+StockItems3=.//*[@id='mi_a_stock_items']/a
+AddButton4=.//*[@id='ewContentColumn']/div[3]/div[1]/div[1]/div[1]/div/a/span
+CatName=x_Category
+CatName1=x_Category
+SupName=x_Supplier_Number
+StocName=x_Stock_Name
+UOM=x_Unit_Of_Measurement
+UOM1=x_Unit_Of_Measurement
+PurPrice=x_Purchasing_Price
+SelPrice=x_Selling_Price
+Note=x_Notes
+SubmitButton4=btnAction
+Confirmation4=.//*[@class='ajs-button btn btn-primary']
+AddSuccesede4=html/body/div[17]/div[2]/div/div[1]/button[3]
+AddSuccesedeSf4=html/body/div[17]/div[2]/div/div[3]/div/div
+
+
+#Close App
+#Logout
+logOut=.//*[@id='mi_logout']/a
+LoginButton1=btnsubmit
+
+
+
+
